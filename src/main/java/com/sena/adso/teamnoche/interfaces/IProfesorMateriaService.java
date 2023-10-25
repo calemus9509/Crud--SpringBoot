@@ -19,7 +19,7 @@ public interface IProfesorMateriaService {
 	List<ProfesorMateria>getAll();
 	
 	//consultar  por id
-	Optional<ProfesorMateria> getById(Long id)throws Exception;
+	ProfesorMateria getById(Long id)throws Exception;
 	
 	//guardar grado
 	ProfesorMateria save(ProfesorMateria profesormateria);

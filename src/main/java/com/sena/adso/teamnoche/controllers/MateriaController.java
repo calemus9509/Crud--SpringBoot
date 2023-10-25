@@ -63,12 +63,12 @@ public class MateriaController {
 		
 	}
 	@GetMapping("{id}")
-	public ResponseEntity<ApiResponseDto<Optional<Materia>>> getById(@PathVariable Long id){
+	public ResponseEntity<ApiResponseDto<Materia>> getById(@PathVariable Long id){
 		try {
-			Optional<Materia> materia =service.getById(id);
-			return ResponseEntity.ok(new ApiResponseDto<Optional<Materia>>("Ok", true, materia));
+		Materia materia =service.getById(id);
+			return ResponseEntity.ok(new ApiResponseDto<Materia>("Ok", true, materia));
 		} catch (Exception e) {
-			return ResponseEntity.internalServerError().body(new ApiResponseDto<Optional<Materia>>(e.getMessage(), false, null));
+			return ResponseEntity.internalServerError().body(new ApiResponseDto<Materia>(e.getMessage(), false, null));
 		}
 		
 		

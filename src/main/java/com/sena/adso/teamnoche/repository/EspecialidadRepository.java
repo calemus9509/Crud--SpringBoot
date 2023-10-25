@@ -18,7 +18,7 @@ public interface EspecialidadRepository extends JpaRepository<Especialidad, Long
 @Query(value ="SELECT * FROM especialidades WHERE deleted_at IS NULL", nativeQuery =true )
 	List<Especialidad> findAllCustom();
 
-@Query(value="SELECT id, nombre FROM especialidades " + "WHERE nombre LIKE CONCAT('%', :searchText, '%') ", nativeQuery = true)
+@Query(value="SELECT id, nombre FROM especialidades WHERE deleted_at is null and nombre LIKE CONCAT('%', :searchText, '%') ", nativeQuery = true)
 Page<EspecialidadDatatableDto> getDatatable(Pageable pageable, String searchText);
 
 @Query(value ="SELECT * FROM especialidades WHERE id = ?1 AND deleted_at IS NULL", nativeQuery = true)

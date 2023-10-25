@@ -19,7 +19,7 @@ public interface IAprendizService {
 		List<Aprendiz>getAll();
 		
 		//consultar profesor por id
-		Optional<Aprendiz> getById(Long id)throws Exception;
+		Aprendiz getById(Long id)throws Exception;
 		
 		//guardar profesor
 		Aprendiz save(Aprendiz aprendiz);

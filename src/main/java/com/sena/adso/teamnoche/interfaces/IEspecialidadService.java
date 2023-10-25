@@ -15,7 +15,7 @@ public interface IEspecialidadService {
 	//consultar todad las especialidades
 	List<Especialidad>getAll();
 	//consultar especialidad por id
-	Optional<Especialidad> getByID(Long id) throws Exception;
+	Especialidad getByID(Long id) throws Exception;
 	//guardar especialidad
 	Especialidad save(Especialidad especialidad);
 	// actualizar 1 registro por id

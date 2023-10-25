@@ -63,12 +63,12 @@ public class ProfesorController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<ApiResponseDto<Optional<Profesor>>> getById(@PathVariable Long id){
+	public ResponseEntity<ApiResponseDto<Profesor>> getById(@PathVariable Long id){
 		try {
-			Optional<Profesor> profesor =service.getById(id);
-			return ResponseEntity.ok(new ApiResponseDto<Optional<Profesor>>("Ok", true, profesor));
+		Profesor profesor =service.getById(id);
+			return ResponseEntity.ok(new ApiResponseDto<Profesor>("Ok", true, profesor));
 		} catch (Exception e) {
-			return ResponseEntity.internalServerError().body(new ApiResponseDto<Optional<Profesor>>(e.getMessage(), false, null));
+			return ResponseEntity.internalServerError().body(new ApiResponseDto<Profesor>(e.getMessage(), false, null));
 		}
 		
 	}

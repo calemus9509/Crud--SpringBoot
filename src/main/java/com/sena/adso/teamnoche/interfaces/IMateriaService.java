@@ -17,7 +17,7 @@ public interface IMateriaService {
 	//consultar todas las materias
 	List<Materia>getAll();
 	//consultar materia por id
-	Optional<Materia> getById(Long id)throws Exception;
+	Materia getById(Long id)throws Exception;
 	//guardar materia
 	Materia save(Materia materia);
 	//actualizar 1 registro por id

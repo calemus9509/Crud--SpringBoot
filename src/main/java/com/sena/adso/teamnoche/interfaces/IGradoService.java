@@ -20,7 +20,7 @@ public interface IGradoService {
 			List<Grado>getAll();
 			
 			//consultar grado por id
-			Optional<Grado> getById(Long id)throws Exception;
+			Grado getById(Long id)throws Exception;
 			
 			//guardar grado
 			Grado save(Grado grado);

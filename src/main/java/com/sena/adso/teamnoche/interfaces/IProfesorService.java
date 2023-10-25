@@ -17,7 +17,7 @@ public interface IProfesorService {
 	List<Profesor>getAll();
 	
 	//consultar profesor por id
-	Optional<Profesor> getById(Long id)throws Exception;
+	Profesor getById(Long id)throws Exception;
 	
 	//guardar profesor
 	Profesor save(Profesor profesor);

@@ -18,7 +18,7 @@ public interface IProfesorMateriaGradoService {
 		List<ProfesorMateriaGrado>getAll();
 		
 		//consultar  por id
-		Optional<ProfesorMateriaGrado> getById(Long id)throws Exception;
+		ProfesorMateriaGrado getById(Long id)throws Exception;
 		
 		//guardar grado
 		ProfesorMateriaGrado save(ProfesorMateriaGrado profesormateriagrado);

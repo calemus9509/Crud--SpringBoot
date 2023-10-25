@@ -40,7 +40,7 @@ public class EspecialidadController {
 	 */
 	
 	@GetMapping("/datatable")
-	public ResponseEntity<?>datable(@RequestParam(name = "page")Integer page,@RequestParam(name = "size")
+	public ResponseEntity<ApiResponseDto<Page<EspecialidadDatatableDto> >>datable(@RequestParam(name = "page")Integer page,@RequestParam(name = "size")
 	Integer size,@RequestParam(name = "column_order")String columnOrder,
 	@RequestParam(name = "column_direction")String columnDirection,
 	@RequestParam(name = "search",required = false)String search){
@@ -48,10 +48,10 @@ public class EspecialidadController {
 			List<Order> orders = new ArrayList<>();
 			orders.add(new Order(columnDirection.equals("asc")? Direction.ASC : Direction.DESC, columnOrder));
 			Page<EspecialidadDatatableDto> data = service.getDatatable(PageRequest.of(page, size, Sort.by(orders)), search ==null? "" : search);
-			return ResponseEntity.ok(data);
+			return ResponseEntity.ok(new ApiResponseDto<>("Ok", true, data));
 			
 		} catch (Exception e) {
-			return ResponseEntity.internalServerError().body(e.getMessage());
+			return ResponseEntity.internalServerError().body(new ApiResponseDto<>(e.getMessage(), false, null));
 		}
 	}
 	
@@ -68,12 +68,12 @@ public class EspecialidadController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<ApiResponseDto<Optional<Especialidad>>> getById(@PathVariable Long id){
+	public ResponseEntity<ApiResponseDto<Especialidad>> getById(@PathVariable Long id){
 		try {
-			Optional<Especialidad> especialidad =service.getByID(id);
-			return ResponseEntity.ok(new ApiResponseDto<Optional<Especialidad>>("Ok", true, especialidad));
+		Especialidad especialidad =service.getByID(id);
+			return ResponseEntity.ok(new ApiResponseDto<Especialidad>("Ok", true, especialidad));
 		} catch (Exception e) {
-			return ResponseEntity.internalServerError().body(new ApiResponseDto<Optional<Especialidad>>(e.getMessage(), false, null));
+			return ResponseEntity.internalServerError().body(new ApiResponseDto<Especialidad>(e.getMessage(), false, null));
 		}
 		
 	}

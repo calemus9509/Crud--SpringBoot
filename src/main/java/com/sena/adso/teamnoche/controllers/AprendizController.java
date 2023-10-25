@@ -62,12 +62,12 @@ public class AprendizController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<ApiResponseDto<Optional<Aprendiz>>> getById(@PathVariable Long id){
+	public ResponseEntity<ApiResponseDto<Aprendiz>> getById(@PathVariable Long id){
 		try {
-			Optional<Aprendiz> aprendiz =service.getById(id);
-			return ResponseEntity.ok(new ApiResponseDto<Optional<Aprendiz>>("Ok", true, aprendiz));
+			Aprendiz aprendiz =service.getById(id);
+			return ResponseEntity.ok(new ApiResponseDto<Aprendiz>("Ok", true, aprendiz));
 		} catch (Exception e) {
-			return ResponseEntity.internalServerError().body(new ApiResponseDto<Optional<Aprendiz>>(e.getMessage(), false, null));
+			return ResponseEntity.internalServerError().body(new ApiResponseDto<Aprendiz>(e.getMessage(), false, null));
 		}
 		
 		
